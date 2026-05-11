@@ -1,0 +1,51 @@
+order_id,customer_id,customer_name,product,category,quantity,unit_price,order_date,region
+ORD0001,C115,Anna Gundersen,SSD 1TB,Storage,4,322.1,2025-02-22,North
+ORD0002,C102,Bob Iversen,SSD 1TB,Storage,1,232.71,2025-04-30,Central
+ORD0003,C145,Anna Fossum,Desk Lamp,Furniture,9,868.06,2025-08-18,Central
+ORD0004,C144,Anna Eriksen,Ergonomic Chair,Furniture,7,713.49,2025-03-21,East
+ORD0005,C124,Bob Dahl,Wireless Mouse,Peripherals,2,750.01,2025-06-26,East
+ORD0006,C134,Anna Jensen,Ergonomic Chair,Furniture,2,1947.58,2025-07-13,East
+ORD0007,C136,Emma Hansen,USB Hub,Accessories,4,1423.92,2025-01-24,Central
+ORD0008,C114,Emma Dahl,SSD 1TB,Storage,2,791.25,2025-08-21,South
+ORD0009,C122,Clara Hansen,SSD 1TB,Storage,4,1356.84,2025-12-26,East
+ORD0010,C134,Jonas Eriksen,SSD 1TB,Storage,4,368.63,2025-07-14,North
+ORD0011,C149,David Hansen,Monitor 27in,Displays,1,496.64,2025-01-17,Central
+ORD0012,C104,Grace Gundersen,Docking Station,Accessories,4,1830.62,2025-10-18,East
+ORD0013,C125,David Jensen,External HDD 2TB,Storage,8,328.6,2025-03-13,East
+ORD0014,C147,Ida Gundersen,Wireless Mouse,Peripherals,10,885.45,2025-10-26,Central
+ORD0015,C132,David Eriksen,Webcam HD,Peripherals,8,227.27,2025-01-25,East
+ORD0016,C150,Clara Eriksen,Cable Management Kit,Accessories,7,1213.0,2025-07-17,North
+ORD0017,C135,Hans Gundersen,Webcam HD,Peripherals,1,1376.55,2025-02-28,Central
+ORD0018,C107,Emma Hansen,SSD 1TB,Storage,5,897.79,2025-08-21,Central
+ORD0019,C132,Ida Eriksen,Laptop Stand,Accessories,2,1747.51,2025-06-02,East
+ORD0020,C109,Jonas Fossum,Cable Management Kit,Accessories,6,1536.9,2025-10-04,Central
+ORD0021,C131,Anna Hansen,Docking Station,Accessories,1,268.14,2025-07-05,Central
+ORD0022,C115,David Berg,Cable Management Kit,Accessories,10,1896.55,2025-02-13,East
+ORD0023,C108,Bob Eriksen,External HDD 2TB,Storage,8,1896.35,2025-03-26,West
+ORD0024,C113,Jonas Iversen,Monitor 27in,Displays,9,1522.77,2025-12-20,Central
+ORD0025,C128,Grace Hansen,Wireless Mouse,Peripherals,9,930.4,2025-05-07,East
+ORD0026,C137,Frank Berg,Wireless Mouse,Peripherals,9,498.72,2025-04-23,North
+ORD0027,C104,Anna Fossum,Laptop Stand,Accessories,1,1726.29,2025-02-06,North
+ORD0028,C113,Emma Jensen,Desk Lamp,Furniture,9,308.01,2025-10-20,South
+ORD0029,C126,David Jensen,Ergonomic Chair,Furniture,4,233.94,2025-12-04,West
+ORD0030,C129,Grace Iversen,Webcam HD,Peripherals,1,1363.06,2025-11-27,East
+ORD0031,C106,Grace Hansen,USB Hub,Accessories,4,423.6,2025-10-02,North
+ORD0032,C117,Grace Eriksen,Headset Pro,Audio,8,537.12,2025-02-08,South
+ORD0033,C141,Bob Berg,Headset Pro,Audio,9,1680.25,2025-02-17,Central
+ORD0034,C131,Clara Iversen,Docking Station,Accessories,8,466.81,2025-07-25,South
+ORD0035,C124,Grace Berg,Laptop Stand,Accessories,5,1856.71,2025-08-21,South
+ORD0036,C109,Ida Jensen,Monitor 27in,Displays,4,628.58,2025-01-30,West
+ORD0037,C103,Anna Hansen,Ergonomic Chair,Furniture,1,1189.15,2025-09-15,Central
+ORD0038,C132,Clara Berg,Cable Management Kit,Accessories,2,1710.12,2025-02-05,Central
+ORD0039,C107,David Iversen,Ergonomic Chair,Furniture,10,530.12,2025-11-01,North
+ORD0040,C142,Bob Iversen,Laptop Stand,Accessories,10,1152.19,2025-06-11,Central
+ORD0041,C116,Frank Fossum,Monitor 27in,Displays,7,305.21,2025-11-27,South
+ORD0042,C100,Frank Dahl,Monitor 27in,Displays,8,1261.26,2025-10-16,West
+ORD0043,C132,Ida Fossum,USB Hub,Accessories,5,308.29,2025-06-28,North
+ORD0044,C110,Frank Gundersen,USB Hub,Accessories,8,1675.8,2025-12-27,South
+ORD0045,C142,Ida Berg,Monitor 27in,Displays,9,633.79,2025-12-06,Central
+ORD0046,C106,Emma Dahl,USB Hub,Accessories,9,353.12,2025-05-25,South
+ORD0047,C143,Frank Fossum,Ergonomic Chair,Furniture,5,1035.55,2025-05-09,South
+ORD0048,C117,Bob Iversen,Cable Management Kit,Accessories,1,56.91,2025-03-08,North
+ORD0049,C135,Clara Jensen,SSD 1TB,Storage,7,1143.77,2025-02-27,East
+ORD0050,C123,Ida Berg,USB Hub,Accessories,10,1127.42,2025-08-09,South
