@@ -20,11 +20,11 @@ This exercise builds on Exercise 01 by introducing more advanced DAX patterns. Y
 
 ## Steps
 
-### 1. Open the semantic model file
+### 1. Open the measures file
 
-In VS Code, open [sales_sample.tmdl](../data/sales_data.SemanticModel/definition/tables/sales_sample.tmdl)
+In VS Code, open [sales_sample.tmdl](sales_sample.tmdl)
 
-Scroll down to find the "Exercise 02 - Advanced DAX Challenges" section with 8 challenge measures.
+You'll see the "Exercise 02 - Advanced DAX Challenges" section with 8 challenge measures.
 
 ### 2. Open the data model reference
 
@@ -63,17 +63,6 @@ Then ask:
 - Ask Copilot: *"Create a measure that shows the percentage of total revenue for each category."*
 - Ask Copilot: *"Explain when to use CALCULATE vs CALCULATETABLE."*
 - Try asking Copilot to optimize one of your measures for performance
-
----
-
-## Testing Your Measures (Optional)
-
-Once you've written a few measures, test them in Power BI Desktop:
-
-1. Save the TMDL file in VS Code
-2. Re-open `exercises/powerbi/data/sales_data.pbip` in Power BI Desktop
-3. Add the measures to a table or matrix visual
-4. Verify the calculations are correct
 
 ---
 

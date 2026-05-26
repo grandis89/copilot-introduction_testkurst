@@ -11,7 +11,7 @@ Copilot works on GitHub.com too, not just in your editor. It can:
 - Generate pull request descriptions from DAX changes
 - Help you understand and respond to issues about BI problems
 
-This exercise walks you through fixing a buggy DAX measure, committing it, and letting Copilot write the PR description.
+This exercise walks you through fixing a buggy DAX measure, committing it, and letting Copilot write the PR description and review it.
 
 ---
 
@@ -29,37 +29,45 @@ Fix the bug (with or without Copilot's help. Hint: Try Agent mode to allow copil
 
 **Hint:** The bug is in the RETURN statement. What happens when `PreviousRevenue` is 0 or BLANK?
 
-### 2. Stage and commit
+### 2. Stage, commit, and push
 
-Open the integrated terminal (`Ctrl+` `` ` ``) and run:
+Choose **one** of the two options below:
+
+#### Option 1: Terminal
 
 ```bash
 git add exercises/powerbi/04-github-features/bugfix_measure.tmdl
 git commit -m "fix: correct revenue growth calculation to handle null values"
-```
-
-### 3. Push to your fork
-
-```bash
 git push origin main
 ```
 
-_(Note: Replace `main` with `master` if your repository uses `master` as the default branch)_
+_(Replace `main` with `master` if your repository uses `master` as the default branch)_
 
-### 4. Open a Pull Request on GitHub
+#### Option 2: VS Code UI
+
+1. Open the **Source Control** panel (`Ctrl+Shift+G`)
+2. You'll see `bugfix_measure.tmdl` listed under **Changes**
+3. Click the **+** icon next to the file to stage it
+4. In the **Message** box at the top, type: `fix: correct revenue growth calculation to handle null values`
+5. Click the **✓ Commit** button
+6. Click the **Sync Changes** button (or click **⋯ → Push**)
+
+> **Tip:** Copilot can also generate commit messages for you — look for the ✨ sparkle icon next to the message box.
+
+### 3. Open a Pull Request on GitHub
 
 1. Go to your fork on GitHub.com
 2. Click **"Compare & pull request"** or go to **Pull requests → New pull request**
 3. Set the base repository to **your own fork**, base branch `main` (or `master`)
 
-### 5. Use Copilot to generate the PR description
+### 4. Use Copilot to generate the PR description
 
 In the PR creation form, look for the **Copilot icon** (✨) next to the description box.  
 Click it → **"Generate with Copilot"**.
 
 Review the generated description. Does it accurately describe the DAX fix? Edit if needed, then submit the PR.
 
-### 6. (Optional) Explore Copilot on an issue
+### 5. (Optional) Explore Copilot on an issue
 
 Go to **Issues** tab and create a new issue:
 

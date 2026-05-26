@@ -1,0 +1,119 @@
+table sales_sample
+	lineageTag: 9e92f363-ffbd-415f-bf87-e8be7d3b394b
+
+	measure 'Total Sales' = SUMX(sales_sample, sales_sample[quantity] * VALUE(sales_sample[unit_price]))
+		formatString: "$"#,0.00
+		lineageTag: 7f9d28e4-889a-4615-8430-4fce94df3b01
+
+	measure rev = [Total Sales]
+		lineageTag: 1ac3a75b-6446-4110-a258-345503a7be83
+
+	measure X = SUM(sales_sample[quantity]) / COUNTROWS(sales_sample)
+		lineageTag: 0670ad45-b9d6-4be6-80d0-e532ff7cab88
+
+	measure GrowthPct = ([Total Sales] - CALCULATE([Total Sales], DATEADD(sales_sample[order_date], -1, MONTH))) / CALCULATE([Total Sales], DATEADD(sales_sample[order_date], -1, MONTH))
+		lineageTag: 3c686e2a-6357-4036-a342-2220a81cf29b
+
+	measure NorthOnly = CALCULATE([Total Sales], sales_sample[region] = "North")
+		formatString: #,0
+		lineageTag: 7c7226f2-f52f-4370-98ef-71b57a5d4b75
+
+	measure avg = SUM(sales_sample[quantity]) / COUNT(sales_sample[order_id])
+		lineageTag: 58bb39f4-b8e9-4f42-99b3-4250c6e2663c
+
+	measure BigCustomers = CALCULATE([Total Sales], TOPN(5, ALL(sales_sample[customer_name]), CALCULATE([Total Sales]), DESC))
+		lineageTag: 096a1b89-e771-4555-94ee-ef9a6c9003e5
+
+	column order_id
+		dataType: string
+		lineageTag: 6225f8dc-5387-4a9e-9c94-d8805e11f3dc
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 06d6ff83-c3d4-4b50-bd1e-247d0289da7c
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 6f591294-bd98-41be-9d75-6e2e7133a375
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: 5e0c3578-06b1-4fe4-8f04-84d28d936bb6
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 5043a94c-f685-4b97-9a3e-9a6cca23229e
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: cbf91a79-ca71-4db5-add9-eafda6b0d12c
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: string
+		lineageTag: b270439b-9a34-4f12-9abd-4ec11c7a0a7b
+		summarizeBy: none
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ea7a8945-0d5a-4e5e-a2cc-523fff8e263e
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 0736cbff-6933-4533-a6fa-cb9eed141279
+			defaultHierarchy: LocalDateTable_5921ea33-2b4b-4910-aa58-f01af33b1c65.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column region
+		dataType: string
+		lineageTag: 3c2c9d87-725d-4d4a-9188-91d65192a1b5
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_sample = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Repoer\Bouvet\copilot-introduction\data\sales_sample.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"customer_id", type text}, {"customer_name", type text}, {"product", type text}, {"category", type text}, {"quantity", Int64.Type}, {"unit_price", type text}, {"order_date", type date}, {"region", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

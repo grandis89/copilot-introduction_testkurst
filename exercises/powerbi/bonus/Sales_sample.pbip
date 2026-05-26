@@ -3,7 +3,7 @@
   "artifacts": [
     {
       "report": {
-        "path": "sales_data.Report"
+        "path": "Sales_sample.Report"
       }
     }
   ],

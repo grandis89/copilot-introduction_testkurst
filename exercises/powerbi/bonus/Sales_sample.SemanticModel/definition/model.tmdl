@@ -6,17 +6,17 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode","TMDL-Extension"]
+annotation PBI_QueryOrder = ["sales_sample"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBIDesktopVersion = 2.130.930.0 (24.06)
 
-annotation PBI_QueryOrder = ["sales_sample"]
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
-ref table DateTableTemplate_95d2d604-8873-4cfe-8cd3-a90506d8aeef
 ref table sales_sample
-ref table LocalDateTable_6413b32e-2870-4ab4-a104-fd6d2e028fbb
+ref table DateTableTemplate_09afacbb-0ba4-4bad-a418-fe089d27d25f
+ref table LocalDateTable_5921ea33-2b4b-4910-aa58-f01af33b1c65
 
 ref cultureInfo en-US
 

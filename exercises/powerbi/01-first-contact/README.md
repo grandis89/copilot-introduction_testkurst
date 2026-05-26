@@ -5,19 +5,66 @@
 
 ---
 
+## Prerequisites
+
+Install the **TMDL** extension in VS Code before starting these exercises. Search for "TMDL" in the Extensions marketplace (`Ctrl+Shift+X`) and install it. This provides syntax highlighting, IntelliSense, and language support for `.tmdl` files.
+
+---
+
+## What is a PBIP file?
+
+A **Power BI Project (.pbip)** is a folder-based format for Power BI content. Instead of a single binary `.pbix` file, your report and semantic model are stored as human-readable text files — making them ideal for version control and collaboration.
+
+### PBIP Project Structure
+
+```mermaid
+graph TD
+    A[project.pbip] --> B[project.Report/]
+    A --> C[project.SemanticModel/]
+    A --> D[.gitignore]
+
+    B --> B1[definition.pbir]
+    B --> B2[definition/]
+    B2 --> B3[report.json]
+    B2 --> B4[pages/]
+
+    C --> C1[definition.pbism]
+    C --> C2[definition/]
+    C2 --> C3[model.tmdl]
+    C2 --> C4[relationships.tmdl]
+    C2 --> C5[tables/]
+    C5 --> C6[sales_sample.tmdl]
+    C5 --> C7[other_table.tmdl]
+```
+
+### What is a .tmdl file?
+
+**TMDL (Tabular Model Definition Language)** is the text-based format used to define semantic models in Power BI. Each `.tmdl` file describes part of your data model:
+
+- **Table definitions** — columns, data types, source queries
+- **Measures** — DAX calculations with formatting and descriptions
+- **Relationships** — how tables connect to each other
+- **Model metadata** — culture settings, roles, perspectives
+
+The `.tmdl` files live inside the `SemanticModel/definition/` folder. The `tables/` subfolder contains one `.tmdl` file per table — this is where your DAX measures are defined.
+
+### Focus for these exercises
+
+Moving forward, **we will only be working with `.tmdl` files** in these exercises. Each exercise has their own .tmdl files, no .pbip project. 
+
+---
+
 ## Background
 
-You've been given a Power BI semantic model ([sales_sample.tmdl](../data/sales_data.SemanticModel/definition/tables/sales_sample.tmdl)) with several incomplete measure definitions in the sales_sample table. Your job is to finish them **using Copilot**, not by writing the DAX yourself.
+You've been given a `.tmdl` file ([sales_sample.tmdl](sales_sample.tmdl)) with several incomplete measure definitions in the sales_sample table. Your job is to finish them **using Copilot**, not by writing the DAX yourself.
 
-
-If you want you can open `exercises/powerbi/data/sales_data.pbip` in Power BI Desktop to check the state of the file before doing changes. Note that your changes will not be detected by Power BI automtically. After doing changes the file must be re-opened. 
 ---
 
 ## Steps
 
 ### 1. Locate the measures file
 
-In VS Code, open [sales_sample.tmdl](../data/sales_data.SemanticModel/definition/tables/sales_sample.tmdl)
+In VS Code, open [sales_sample.tmdl](sales_sample.tmdl)
 
 Scroll down to find the "Exercise 01" section with TODO measures. Notice the `/// TODO` comments — those are your targets.
 
@@ -26,7 +73,6 @@ Scroll down to find the "Exercise 01" section with TODO measures. Notice the `//
 Go to the `'Total Quantity'` measure. Delete `BLANK()` and **start typing the DAX yourself** — as you type `SUM(`, Copilot will suggest the rest. Press `Tab` to accept.
 
 > **Tip:** If the suggestion isn't right, press `Esc` and try typing a bit more to give Copilot more context. You can also cycle through alternative suggestions with `Alt+]` (Windows/Linux) or `Option+]` (Mac).
-
 
 ### 3. Let a comment guide Copilot
 
@@ -62,17 +108,6 @@ Once the TODOs are done, experiment:
 - Uncomment the time intelligence measures and ask Copilot to implement them
 - Ask Copilot: *"How would I create a measure that shows revenue for the previous month?"*
 
----
-
-## Testing in Power BI (Optional)
-
-If you want to verify your measures work correctly:
-
-1. Save the TMDL file in VS Code (Best to press File/Save All)
-2. Open (or re-open) `exercises/powerbi/data/sales_data.pbip` in Power BI Desktop
-3. Create a visual and add your measures to test them
-
-> **Note:** Power BI Desktop does not automatically detect TMDL file changes while open. You must save .tmdl and .pbip file and re-open the PBIP file to see your updates.
 
 ---
 

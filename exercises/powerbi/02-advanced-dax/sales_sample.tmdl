@@ -1,0 +1,152 @@
+table sales_sample
+	lineageTag: a4650602-f09c-452b-a87b-131ee839bb23
+
+	/// ============================================================================
+	/// Exercise 02 - Advanced DAX Challenges
+	/// ============================================================================
+	/// Use Copilot Chat to write these advanced DAX measures
+	/// Focus on: SUMX, CALCULATE, time intelligence, RANKX, TOPN
+
+	/// Challenge 1: Total Revenue with SUMX
+	/// Business requirement: Calculate total revenue across all orders
+	/// Revenue per row = quantity * unit_price (converted to number)
+	/// TODO: Use SUMX to iterate over rows
+	measure 'Total Revenue' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000001
+
+	/// Challenge 2: Filtered Revenue with CALCULATE
+	/// Business requirement: Show revenue for "North" region only,
+	/// regardless of any region filter applied in the report
+	/// TODO: Use CALCULATE to override filters
+	measure 'North Region Revenue' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000002
+
+	/// Challenge 3: Year-to-Date Revenue
+	/// Business requirement: Show cumulative revenue from the start of the current year
+	/// up to the latest date in the current filter context
+	/// TODO: Use TOTALYTD time intelligence function
+	measure 'YTD Revenue Ex2' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000003
+
+	/// Challenge 4: Product Revenue Rank
+	/// Business requirement: Rank each product by its Total Revenue within
+	/// the current filter context (rank 1 = highest revenue product)
+	/// TODO: Use RANKX to calculate the ranking
+	measure 'Product Rank by Revenue' = BLANK()
+		formatString: #,0
+		lineageTag: 20000000-0000-0000-0000-000000000004
+
+	/// Challenge 5: Top 10 Customers by Revenue
+	/// Business requirement: Calculate total revenue but only for the top 10 customers
+	/// (by their total revenue)
+	/// TODO: Use TOPN and SUMX together
+	measure 'Top 10 Customers Revenue' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000005
+
+	/// Challenge 6: Revenue vs Previous Month
+	/// Business requirement: Calculate the difference between current month revenue
+	/// and previous month revenue
+	/// TODO: Use DATEADD to shift dates
+	measure 'Revenue Change vs Prev Month' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000006
+
+	/// Challenge 7: Average Order Value Ex2
+	/// Business requirement: Calculate the average revenue per unique order
+	/// TODO: Use DISTINCTCOUNT to count unique orders, use DIVIDE for safety
+	measure 'Average Order Value Ex2' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000007
+
+	/// BONUS Challenge: Dynamic Period Comparison
+	/// Business requirement: Show revenue for the selected period compared to
+	/// the same period last year, showing both values and the % change
+	/// TODO: Use VAR to store intermediate calculations, SAMEPERIODLASTYEAR
+	measure 'Revenue YoY Comparison' = BLANK()
+		formatString: "$"#,0.00
+		lineageTag: 20000000-0000-0000-0000-000000000008
+
+	column order_id
+		dataType: string
+		lineageTag: cf9d68a9-4592-4b45-a491-e7973ab4a5ee
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: edc5ab8e-63db-43bd-be9f-b2e362b429dd
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: fbcf3d79-45d4-4bb5-bbbf-1e01818a24a9
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: 590572c7-a8d5-49d9-b06a-ae409ffa958f
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 97d12fb5-be15-4e7e-91c3-162c5ba307a9
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e497e0b-7993-401c-9484-be6d4396e48c
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: string
+		lineageTag: 1cc32810-45d9-4691-9ce5-57f292982f31
+		summarizeBy: none
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7ce24fb5-2117-4c8c-b919-f90af2af02b3
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: e5850baa-e223-41c9-adb8-8e35b7b30532
+			defaultHierarchy: LocalDateTable_6413b32e-2870-4ab4-a104-fd6d2e028fbb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column region
+		dataType: string
+		lineageTag: cad2bcca-d0e0-4cf2-8b86-31011d9f7120
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic

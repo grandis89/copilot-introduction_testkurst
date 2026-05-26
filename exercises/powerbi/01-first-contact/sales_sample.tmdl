@@ -52,75 +52,6 @@ table sales_sample
 	///		formatString: 0.00%;-0.00%;0.00%
 	///		lineageTag: 10000000-0000-0000-0000-000000000007
 
-	/// ============================================================================
-	/// Exercise 02 - Advanced DAX Challenges
-	/// ============================================================================
-	/// Use Copilot Chat to write these advanced DAX measures
-	/// Focus on: SUMX, CALCULATE, time intelligence, RANKX, TOPN
-
-	/// Challenge 1: Total Revenue with SUMX
-	/// Business requirement: Calculate total revenue across all orders
-	/// Revenue per row = quantity * unit_price (converted to number)
-	/// TODO: Use SUMX to iterate over rows
-	measure 'Total Revenue' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000001
-
-	/// Challenge 2: Filtered Revenue with CALCULATE
-	/// Business requirement: Show revenue for "North" region only,
-	/// regardless of any region filter applied in the report
-	/// TODO: Use CALCULATE to override filters
-	measure 'North Region Revenue' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000002
-
-	/// Challenge 3: Year-to-Date Revenue
-	/// Business requirement: Show cumulative revenue from the start of the current year
-	/// up to the latest date in the current filter context
-	/// TODO: Use TOTALYTD time intelligence function
-	measure 'YTD Revenue Ex2' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000003
-
-	/// Challenge 4: Product Revenue Rank
-	/// Business requirement: Rank each product by its Total Revenue within
-	/// the current filter context (rank 1 = highest revenue product)
-	/// TODO: Use RANKX to calculate the ranking
-	measure 'Product Rank by Revenue' = BLANK()
-		formatString: #,0
-		lineageTag: 20000000-0000-0000-0000-000000000004
-
-	/// Challenge 5: Top 10 Customers by Revenue
-	/// Business requirement: Calculate total revenue but only for the top 10 customers
-	/// (by their total revenue)
-	/// TODO: Use TOPN and SUMX together
-	measure 'Top 10 Customers Revenue' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000005
-
-	/// Challenge 6: Revenue vs Previous Month
-	/// Business requirement: Calculate the difference between current month revenue
-	/// and previous month revenue
-	/// TODO: Use DATEADD to shift dates
-	measure 'Revenue Change vs Prev Month' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000006
-
-	/// Challenge 7: Average Order Value Ex2
-	/// Business requirement: Calculate the average revenue per unique order
-	/// TODO: Use DISTINCTCOUNT to count unique orders, use DIVIDE for safety
-	measure 'Average Order Value Ex2' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000007
-
-	/// BONUS Challenge: Dynamic Period Comparison
-	/// Business requirement: Show revenue for the selected period compared to
-	/// the same period last year, showing both values and the % change
-	/// TODO: Use VAR to store intermediate calculations, SAMEPERIODLASTYEAR
-	measure 'Revenue YoY Comparison' = BLANK()
-		formatString: "$"#,0.00
-		lineageTag: 20000000-0000-0000-0000-000000000008
-
 	column order_id
 		dataType: string
 		lineageTag: cf9d68a9-4592-4b45-a491-e7973ab4a5ee
@@ -201,18 +132,3 @@ table sales_sample
 		sourceColumn: region
 
 		annotation SummarizationSetBy = Automatic
-
-	partition sales_sample = m
-		mode: import
-		source =
-				let
-				    Source = Csv.Document(File.Contents("C:\Repoer\Bouvet\copilot-introduction\data\sales_sample.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
-				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"customer_id", type text}, {"customer_name", type text}, {"product", type text}, {"category", type text}, {"quantity", Int64.Type}, {"unit_price", type text}, {"order_date", type date}, {"region", type text}})
-				in
-				    #"Changed Type"
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
-

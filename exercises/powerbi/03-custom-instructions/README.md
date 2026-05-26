@@ -39,7 +39,7 @@ Now create your custom instructions file.
 
 A Power BI-specific template is provided in this exercise folder.
 
-Copy `instructions_template_powerbi.md` to `.github/copilot-instructions.md` in the workspace root.
+Copy `instructions_template_powerbi.md` to `.github/copilot-instructions.md` in the workspace root. If .github folder doesnt exist for your create, you can create it manually. 
 
 Then open `.github/copilot-instructions.md` and make at least **three changes** that reflect your Power BI development preferences:
 
