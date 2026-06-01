@@ -27,5 +27,5 @@ table sales_sample
 	column unit_price
 		dataType: double
 		lineageTag: 30000000-0000-0000-0000-000000000012
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: unit_price
