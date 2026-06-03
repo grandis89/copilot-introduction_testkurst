@@ -61,8 +61,12 @@ After pushing your branch, go to your **forked repository** on GitHub.com (not t
 1. You should see a **green banner** at the top of the page saying something like:  
    _"Your branch is 1 commit ahead — Compare & pull request"_
 2. Click the **"Compare & pull request"** button in that banner
+3. <img width="1889" height="403" alt="image" src="https://github.com/user-attachments/assets/edbad0dc-0cde-4281-8b5c-54660d554f30" />
 
-> ⚠️ **Important:** When the PR creation form opens, pay close attention to the **base repository** dropdown at the top. By default, GitHub may set the base to the **original (upstream) repository**. You must change it to point to **your own fork** instead.  
+
+> ⚠️ **Important:** When the PR creation form opens, pay close attention to the **base repository** dropdown at the top. By default, GitHub may set the base to the **original (upstream) repository**. You must change it to point to **your own fork** instead.
+> <img width="2616" height="1005" alt="image" src="https://github.com/user-attachments/assets/23a78d8b-c74d-42d7-ac6e-68b4882f019f" />
+
 >
 > It should read:  
 > `base repository: <your-username>/<repo-name>` · `base: main` ← `compare: main`  
